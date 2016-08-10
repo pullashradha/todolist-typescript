@@ -1,2 +1,34 @@
 /// <reference path="to-do-classes-interfaces.ts"/>
 /// <reference path="to-do-people.ts"/>
+/// <reference path="to-do-listing-functions.ts"/>
+
+var people = ToDoList.people;
+
+var today = new Date();
+var tomorrow = today;
+tomorrow.setDate(today.getDate() + 1);
+var dayAfterTomorrow = today;
+dayAfterTomorrow.setDate(today.getDate() + 2);
+
+var tasks = [];
+tasks.push (new ToDoList.HomeTask("Do the dishes", "High"));
+tasks.push (new ToDoList.HomeTask("Buy chocolate", "Low", people.diane));
+tasks.push (new ToDoList.HomeTask("Wash the laundry", "High"));
+
+tasks.push (new ToDoList.HobbyTask("Practice origami"));
+tasks.push (new ToDoList.HobbyTask("Bake a pie"));
+
+tasks.push (new ToDoList.WorkTask(today, "Update blog", "High", people.diane));
+tasks.push (new ToDoList.WorkTask(tomorrow, "Go to meeting", "Medium", people.thor));
+tasks.push (new ToDoList.WorkTask(tomorrow, "Save the world", "High", people.thor));
+tasks.push (new ToDoList.WorkTask(dayAfterTomorrow, "Buy a new shirt", "Low", people.thor));
+tasks.push (new ToDoList.WorkTask(dayAfterTomorrow, "Clean ceiling", "Low", people.loki));
+
+console.log(tasks);
+
+var thorTasks = ToDoList.describeTasksForPerson(people.thor, tasks);
+console.log("Here are all of Thor's tasks: " + thorTasks);
+
+for (var task of thorTasks) {
+  console.log(task);
+}

@@ -28,7 +28,9 @@ module ToDoList {
       super (description, "Low");
     }
   }
-  export class WorkTask extends Task (public description: string, public priority: string, public assignedTo: IPerson) {
-    super (description, priority, assignedTo);
+  export class WorkTask extends Task {
+    constructor (public dueDate: Date, public description: string, public priority: string, public assignedTo: IPerson) {
+      super (description, priority, assignedTo);
+    }
   }
 }
